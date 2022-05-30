@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <p id="texto">un texto</p>
+        <label for="colortexto">color del texto</label>
+        <select id="colortexto">
+            <option value="black">negro</option>
+            <option value="green">verde</option>
+        <option value="red">rojo</option>
+        <option value="blue">azul</option>
+        <option value="orange">naranja</option>
+        </select>
+        <label for="colorfondo">color del fondo</label>
+        <select id="colorfondo">
+            <option value="white">Blanco</option>
+            <option value="red">Rojo</option>
+            <option value="green">Verde</option>
+            <option value="blue">Azul</option>
+        </select>
+    </div>
+
+    <script>
+        const texto = document.querySelector("#texto")
+        const colortexto = document.querySelector("#colortexto")
+        const colorfondo = document.querySelector("#colorfondo")
+
+        texto.style.color = "black";
+        texto.style.backgroundColor = "white";
+      
+        
+        colortexto.onchange = () => console.log(colortexto.value)
+        colortexto.onclick = () => texto.style.color = colortexto.value
+        colorfondo.onclick = () => texto.style.backgroundColor = colorfondo.value
+        
+        console.log(colortexto.value)
+        console.log(colorfondo.value)
+    
+    </script>
+</body>
+</html>
