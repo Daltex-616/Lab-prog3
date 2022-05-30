@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Doom</title>
+  </head>
+  <body>
+    <p id="mensaje">Hola mundo</p>
+    <input type="text" id="input">
+    <button id="boton" onclick="cambiarMensaje()">Cambiar mensaje</button>
+    <script>
+      const mensaje = document.querySelector("#mensaje");
+
+      function cambiarMensaje() {
+        nuevo_mensaje = document.querySelector("#input")
+        mensaje.textContent = nuevo_mensaje.value;
+      }
+      
+    </script>
+  </body>
+</html>
