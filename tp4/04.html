@@ -1,0 +1,66 @@
+<html>
+<title>Calculadora de IMC</title>
+<body>
+
+
+<style>
+  body{
+    background-color: #EB984E;
+  }
+  div{
+    width: 300px;
+    height: 220px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    border-radius: 10px;
+    background-color: #EB984E;
+    border: 1px solid #CCCCCC;
+    margin-left: 40%;
+    align-items: center;
+  }
+  h2 {
+      margin-left: 20px;
+  }
+  #inputPeso{
+    margin-left: 12px;
+  }
+  #inputIMC{
+    margin-left: 18px;
+  }
+  #inputIMC {
+    margin-left: 15px;
+  }
+  #boton {
+    margin-left: 91px;
+  }
+</style>
+<div>
+  <h2>Calculadora de IMC</h2>
+  <p>
+    <label>Altura </label>
+    <input id="inputAltura" type="number" placeholder="Altura">
+    <span title="Altura">m</span>
+  </p>
+  <p>
+    <label>Peso </label>
+    <input id="inputPeso" type="number" placeholder="Peso" >
+    <span  title="peso">Kg</span>
+  </p>
+  <button id="boton" onclick="IMC()">Calcular</button>
+  <p>
+    <label>IMC</label>
+    <input id="inputIMC" type="number" placeholder="IMC" >
+  </p>
+  
+</div>
+<script>
+function IMC() {
+  var altura= +document.getElementById("inputAltura").value;
+  var peso = +document.getElementById("inputPeso").value
+  document.getElementById("inputIMC").value=((peso/(altura**2)))
+}
+
+
+</script>
+</body>
+</html>

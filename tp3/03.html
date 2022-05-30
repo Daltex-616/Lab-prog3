@@ -1,0 +1,67 @@
+<html>
+<title>Conversor de Temperaturas</title>
+<body>
+
+
+<style>
+  body{
+    background-color: rosybrown;
+  }
+  div{
+    width: 300px;
+    height: 200px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    border-radius: 10px;
+    background-color: rosybrown;
+    border: 1px solid #CCCCCC;
+    margin-left: 40%;
+    align-items: center;
+  }
+  #inputCelsius{
+    margin-left: 12px;
+  }
+  #inputKelvin{
+    margin-left: 18px;
+  }
+  #k {
+    margin-left: 5px;
+  }
+</style>
+<div>
+  <h2>Conversor de temperaturas</h2>
+  <p>
+    <label>Celsius </label>
+    <input id="inputCelsius" type="number" placeholder="Celsius" onkeypress="Celsius()" onkeyup="Celsius()" onkeydown="Celsius()">
+    <span title="Celsius">°C</span>
+  </p>
+  <p>
+    <label>Farenheit </label>
+    <input id="inputFarenheit" type="number" placeholder="Farenheit" onkeypress="Farenheit()" onkeyup="Farenheit()" onkeydown="Farenheit()">
+    <span  title="Farenheit">°F</span>
+  </p>
+  <p>
+    <label>Kelvin</label>
+    <input id="inputKelvin" type="number" placeholder="Kelvin" onkeypress="Kelvin()" onkeyup="Kelvin()" onkeydown="Kelvin()">
+    <span id="k" title="Kelvin"> K</span>
+  </p>
+</div>
+<script>
+function Celsius() {
+  var temp = +document.getElementById("inputCelsius").value;
+  document.getElementById("inputFarenheit").value=((temp*9/5)+32.).toFixed(2)
+  document.getElementById("inputKelvin").value=(temp+273).toFixed(2)
+}
+function Farenheit() {
+  var temp = document.getElementById("inputFarenheit").value;
+  document.getElementById("inputCelsius").value=((temp-32)*5/9).toFixed(2)
+  document.getElementById("inputKelvin").value=((temp-32)*5/9 +273).toFixed(2)
+}
+function Kelvin() {
+  var temp = document.getElementById("inputKelvin").value;
+  document.getElementById("inputCelsius").value=(temp-273).toFixed(2)
+  document.getElementById("inputFarenheit").value=((temp-273)*9/5+32).toFixed(2)
+}
+</script>
+</body>
+</html>

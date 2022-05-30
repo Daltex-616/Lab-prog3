@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perimetro y Area</title>
+</head>
+<body>
+    <h1>cosas de rectangulos</h1>
+    <p id="mensaje"></p>
+    <input id="entrada">
+    <input id="entrada2">
+    <button id="boton">Perimietro</button>
+    <button id="boton2">area</button>
+    <script>
+        const mensaje = document.querySelector('#mensaje')
+        const entrada = document.querySelector('#entrada')
+        const entrada2 = document.querySelector('#entrada2')
+        const boton = document.querySelector('#boton')
+        const boton2 = document.querySelector('#boton2')
+
+        boton.onclick = () => (mensaje.textContent = 'El Perimietro es = '+2*entrada.value + 2*entrada2.value);
+        boton2.onclick = () => (mensaje.textContent = 'El Area es = '+ (entrada.value *entrada2.value));
+        
+
+    </script>
+</body>
+</html>
