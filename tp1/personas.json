@@ -1,0 +1,24 @@
+{
+  "personas": [
+    {
+      "descripcion": "asd asd asd",
+      "lista": false,
+      "id": 1
+    },
+    {
+      "descripcion": "a a 1",
+      "lista": false,
+      "id": 2
+    },
+    {
+      "descripcion": "asd 11 12",
+      "lista": false,
+      "id": 3
+    },
+    {
+      "descripcion": "federico zamora 25",
+      "lista": true,
+      "id": 4
+    }
+  ]
+}

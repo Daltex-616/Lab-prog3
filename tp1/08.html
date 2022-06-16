@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>persona</title>
+  </head>
+  <body>
+    <input id="apellidoPersona" placeholder="Apellido"/>
+    <input id="nombrePersona" placeholder="Nombre" />
+    <input id="edadPersona" placeholder="Edad"/>
+    <button id="agregarPersona">Agregar</button>
+    <button id="agregarPersona"></button>
+    <ul id="lista"></ul>
+    <script>
+      let personas = [];
+      let maxId = 0;
+      const lista = document.querySelector("#lista");
+      const nombrePersona = document.querySelector("#nombrePersona");
+      const apellidoPersona = document.querySelector("#apellidoPersona");
+      const edadPersona = document.querySelector("#edadPersona");
+      const agregarPersona = document.querySelector("#agregarPersona");
+      const editarPersona = document.querySelector("#editarpersona");
+
+      agregarPersona.onclick = () => {
+          class PersonaID {
+            constructor(nombre,apellido,edad){
+                this.nombre = nombrePersona.value;
+                this.apellido = apellidoPersona.value;
+                this.edad = edadPersona.value;
+            }
+            mostrar(){
+                console.log(this.nombre + ' ' + this.apellido + ' ' + this.edad)
+            }
+
+          }
+        const item = document.createElement("li");
+        item.textContent = nombrePersona.value + " " + apellidoPersona.value + " " + edadPersona.value + " ";
+        
+
+
+        const nuevaPersona = {
+          id: ++maxId,
+          descripcion: nombrePersona.value + " " + apellidoPersona.value + " " + edadPersona.value + " ",
+          lista: false,
+        };
+        personas.push(nuevaPersona);
+
+        const eliminar = document.createElement("button");
+        eliminar.textContent = "X";
+        eliminar.onclick = () => {
+          if (confirm(`¿Desea quitar la persona "${nuevaPersona.descripcion}"?`)) {
+            personas = personas.filter((personas) => personas.id !== nuevaPersona.id);
+            item.remove();
+          }
+        };
+
+        const modificar = document.createElement("button")
+        modificar.textContent = "Editar"
+        modificar.onclick = () =>{
+          nombrePersona.value = prompt("Ingrese Nombre","")
+          apellidoPersona.value = prompt(String("Ingrese Apellido",""))
+          edadPersona.value = prompt(String("Ingrese Edad",""))
+          nuevaPersona.descripcion = nombrePersona.value + " " + apellidoPersona.value + " " + edadPersona.value + " ";
+          item.textContent = nombrePersona.value + " " + apellidoPersona.value + " " + edadPersona.value + " ";
+          item.appendChild(eliminar);
+          item.appendChild(modificar);
+          console.log(personas)
+        };
+        const pers = new PersonaID ();
+        pers.mostrar()
+        item.appendChild(eliminar);
+        lista.appendChild(item);
+        item.appendChild(modificar);
+      };
+    </script>
+  </body>
+</html>

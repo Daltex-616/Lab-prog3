@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tareas</title>
+  </head>
+  <body>
+    <input id="nombre" />
+    <input id="apellido" />
+    <input id="edad" />
+    <button id="agregarTarea">Agregar</button>
+    <ul id="listaTareas"></ul>
+    <script>
+      const listaTareas = document.querySelector("#listaTareas");
+      const nombre = document.querySelector("#nombre");
+      const apellido = document.querySelector("#apellido");
+      const edad = document.querySelector("#edad");
+      const agregarTarea = document.querySelector("#agregarTarea");
+     
+      function crearPersona(persona) {
+        const item = document.createElement("li");
+        item.textContent = persona.descripcion
+
+        item.onclick = async () => {
+          const respuesta = await fetch(
+            "http://localhost:3000/personas/" + persona.id,
+            {
+              method: "PUT",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({ ...persona, lista: !persona.lista }),
+            }
+          );
+
+        };
+
+        const modificar = document.createElement("button");
+        modificar.textContent = "Editar";
+        modificar.onclick = async () => {
+            nombre.value = prompt("Ingrese Nombre","")
+            apellido.value = prompt(String("Ingrese Apellido",""))
+            edad.value = prompt(String("Ingrese Edad",""))
+            const respuesta = await fetch(
+            "http://localhost:3000/personas/" + String(persona.id),
+            {
+              method: "PATCH",
+              headers: {
+                
+                "Content-Type": "application/json",
+              },
+              
+              body: JSON.stringify({ ...persona, lista: !persona.lista }),
+            },
+            persona.descripcion= String(nombre.value) + " " + String(apellido.value) + " " + String(edad.value))
+            item.textContent = nombre.value + " " + apellido.value + " " + edad.value + " ";
+            item.appendChild(eliminar);
+            item.appendChild(modificar);
+          }
+
+        const eliminar = document.createElement("button");
+        eliminar.textContent = "X";
+        eliminar.onclick = async () => {
+          if (confirm(`¿Desea quitar la tarea "${persona.descripcion}"?`)) {
+            const respuesta = await fetch(
+              "http://localhost:3000/personas/" + persona.id,
+              {
+                method: "DELETE",
+              }
+            );
+            if (respuesta.ok) {
+              item.remove();
+            } else {
+              console.error("error al eliminar tarea");
+            }
+          }
+        };
+
+        item.appendChild(eliminar);
+        listaTareas.appendChild(item);
+        item.appendChild(modificar)
+      }
+
+      agregarTarea.onclick = async () => {
+        const respuesta = await fetch("http://localhost:3000/personas", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            descripcion: nombre.value + " " + apellido.value  +" "+ edad.value,
+            lista: false,
+          }),
+        });
+        if (respuesta.ok) {
+          const nuevaPersona = await respuesta.json();
+          crearPersona(nuevaPersona);
+        } else {
+          console.error("Fallo al crear tarea");
+        }
+      };
+
+      async function leerPersona() {
+        const respuesta = await fetch("http://localhost:3000/personas");
+        const personas = await respuesta.json();
+
+        personas.map((persona) => crearPersona(persona));
+      }
+      leerPersona();
+    </script>
+  </body>
+</html>
