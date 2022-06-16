@@ -3,10 +3,27 @@
   <head>
     <title>Tareas</title>
   </head>
+  <style>
+    body{
+    background-color: #EB984E;}
+    #divi{
+    width: 400px;
+    height: 150px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    border-radius: 10px;
+    background-color: #EB984E;
+    border: 1px solid #CCCCCC;
+    margin-left: 40%;
+    align-items: center;
+    }
+  </style>
   <body>
+    <div id="divi">
     <input id="nombreTarea" />
     <button id="agregarTarea">Agregar</button>
     <ul id="lista"></ul>
+  </div>
     <script>
       let tareas = [];
       let maxId = 0;
@@ -30,17 +47,9 @@
           item.style["text-decoration"] = nuevaTarea.lista ? "line-through" : "";
         };
 
-        // const eliminar = document.createElement("button");
-        // eliminar.textContent = "ඞ";
-        // eliminar.onclick = () => {
-        //   if (confirm(`¿Desea quitar la tarea "${nuevaTarea.descripcion}"? ඞ`)) {
-        //     tareas = tareas.filter((tarea) => tarea.id !== nuevaTarea.id);
-        //     item.remove();
-        //   }
-        // };
-
-        // item.appendChild(eliminar);
+        
         lista.appendChild(item);
+        
       };
     </script>
   </body>
